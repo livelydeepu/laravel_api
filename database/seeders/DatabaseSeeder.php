@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,10 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        $this->call([
-            TaskSeeder::class,
-        ]);
+        User::factory(5)->has(
+            Task::factory(10)
+        )->create();
     }
 }
